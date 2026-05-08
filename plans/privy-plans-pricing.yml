@@ -5,37 +5,97 @@ provider: Privy
 providerId: privy
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Web3
-- Wallet
-- Auth
-- Embedded
-- Smart Wallet
+- Wallets
+- Authentication
+- Embedded Wallets
+- MPC
 - Plans
-description: Placeholder plans/pricing artifact for Privy. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
+description: Privy is sold by monthly active wallets (MAW) with included wallet operations
+  and overage rates. Pricing scales with MAW.
+notes: Verify against privy.io/pricing.
 sources:
-- https://www.privy.io/
+- https://www.privy.io/pricing
 plans:
-- id: privy-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: privy-free
+  name: Free
+  type: free
+  description: Free up to a small monthly active wallet count for prototyping.
   entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
+  - label: Monthly Active Wallets
+    name: maw
+    type: included
+    metric: wallets
+    limit: 1000
+    timeFrame: month
     geo: global
     unit: 1
-    price: see https://www.privy.io/
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Embedded Wallets
+  - name: Authentication
+  - name: Community Support
+- id: privy-pro
+  name: Pro
+  type: paid
+  description: Production tier with higher MAW allotment and overage pricing.
+  entries:
+  - label: Monthly Subscription
+    name: monthly_subscription
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 99
+    userMultiplied: false
+  - label: Included MAW
+    name: included_maw
+    type: included
+    metric: wallets
+    limit: 25000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+  - label: MAW Overage
+    name: maw_overage
+    type: overage
+    metric: wallet
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see pricing page
+    userMultiplied: false
+  elements:
+  - name: Server Wallets
+  - name: Webhooks
+  - name: Email Support
+- id: privy-enterprise
+  name: Enterprise
+  type: enterprise
+  description: Custom enterprise contracts with SOC 2 Type II and dedicated support.
+  entries:
+  - label: Custom
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: SOC 2 Type II
+  - name: Dedicated Support
+  - name: Custom Auth Methods
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

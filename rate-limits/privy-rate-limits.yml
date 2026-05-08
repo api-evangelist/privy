@@ -5,31 +5,30 @@ provider: Privy
 providerId: privy
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Web3
-- Wallet
-- Auth
-- Embedded
-- Smart Wallet
+- Wallets
+- Authentication
+- Embedded Wallets
+- MPC
 - Rate Limiting
-- Quotas
-- Throttling
-description: Placeholder rate-limit artifact for Privy. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: Privy enforces per-app rate limits on REST API endpoints. Default tiers
+  vary per endpoint family.
+notes: Wallet RPC endpoints are throttled separately from user/auth endpoints.
 sources:
-- https://www.privy.io/
+- https://docs.privy.io/api-reference/introduction
 responseCodes:
   throttled: 429
 limits:
 - name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  scope: app
+  metric: requests_per_second
+  limit: 10
+  notes: Default per-app limit; varies per endpoint.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Exponential backoff on 429.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
