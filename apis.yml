@@ -1,0 +1,29 @@
+aid: privy
+url: https://raw.githubusercontent.com/api-evangelist/privy/refs/heads/main/apis.yml
+name: Privy
+x-type: company
+description: >-
+  Privy is wallet infrastructure for embedding Web3 in any app. Provides embedded wallets, social login, MPC key management, and smart wallets across EVM and Solana.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Web3
+  - Wallet
+  - Auth
+  - Embedded
+  - Smart Wallet
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.privy.io/
+  - type: Plans
+    url: plans/privy-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/privy-rate-limits.yml
+  - type: FinOps
+    url: finops/privy-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
