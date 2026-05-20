@@ -8,62 +8,66 @@ description: Privy is a wallet and authentication platform for Web3 apps offerin
   REST API for wallet, user, and transaction operations.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Web3
-- Wallets
-- Authentication
-- Embedded Wallets
-- MPC
+  - Web3
+  - Wallets
+  - Authentication
+  - Embedded Wallets
+  - MPC
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
 apis:
-- aid: privy:rest-api
-  name: Privy REST API
-  description: REST API for managing users, wallets, sessions, transactions, and policies.
-    Endpoints include /v1/users, /v1/wallets, wallet RPC, signing, and transaction
-    sending across EVM and Solana.
-  humanURL: https://docs.privy.io/api-reference/introduction
-  baseURL: https://api.privy.io/v1
-  tags:
-  - REST
-  - Wallets
-  - Users
-  - Auth
-  properties:
-  - type: Documentation
-    url: https://docs.privy.io/api-reference/introduction
-- aid: privy:wallets-rpc
-  name: Privy Wallets RPC
-  description: JSON-RPC method passthrough for signing transactions and arbitrary
-    RPC calls against Privy-managed wallets.
-  humanURL: https://docs.privy.io/api-reference/wallets/rpc
-  baseURL: https://api.privy.io/v1/wallets/{walletId}/rpc
-  tags:
-  - JSON-RPC
-  - Wallet
-  properties:
-  - type: Documentation
-    url: https://docs.privy.io/api-reference/wallets/rpc
-- aid: privy:webhooks
-  name: Privy Webhooks
-  description: Webhook delivery of user, wallet, and transaction events. Subscriptions
-    managed via the dashboard and REST API.
-  humanURL: https://docs.privy.io/recipes/webhooks
-  baseURL: https://api.privy.io/v1
-  tags:
-  - Webhooks
-  properties:
-  - type: Documentation
-    url: https://docs.privy.io/recipes/webhooks
+  - aid: privy:rest-api
+    name: Privy REST API
+    description: REST API for managing users, wallets, sessions, transactions, and policies.
+      Endpoints include /v1/users, /v1/wallets, wallet RPC, signing, and transaction
+      sending across EVM and Solana.
+    humanURL: https://docs.privy.io/api-reference/introduction
+    baseURL: https://api.privy.io/v1
+    tags:
+    - REST
+    - Wallets
+    - Users
+    - Auth
+    properties:
+    - type: Documentation
+      url: https://docs.privy.io/api-reference/introduction
+  - aid: privy:wallets-rpc
+    name: Privy Wallets RPC
+    description: JSON-RPC method passthrough for signing transactions and arbitrary
+      RPC calls against Privy-managed wallets.
+    humanURL: https://docs.privy.io/api-reference/wallets/rpc
+    baseURL: https://api.privy.io/v1/wallets/{walletId}/rpc
+    tags:
+    - JSON-RPC
+    - Wallet
+    properties:
+    - type: Documentation
+      url: https://docs.privy.io/api-reference/wallets/rpc
+  - aid: privy:webhooks
+    name: Privy Webhooks
+    description: Webhook delivery of user, wallet, and transaction events. Subscriptions
+      managed via the dashboard and REST API.
+    humanURL: https://docs.privy.io/recipes/webhooks
+    baseURL: https://api.privy.io/v1
+    tags:
+    - Webhooks
+    properties:
+    - type: Documentation
+      url: https://docs.privy.io/recipes/webhooks
 common:
-- type: Website
-  url: https://www.privy.io/
-- type: Plans
-  url: plans/privy-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/privy-rate-limits.yml
-- type: FinOps
-  url: finops/privy-finops.yml
+  - type: GitHubOrganization
+    url: https://github.com/privy-io
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/privyio
+  - type: Website
+    url: https://www.privy.io/
+  - type: Plans
+    url: plans/privy-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/privy-rate-limits.yml
+  - type: FinOps
+    url: finops/privy-finops.yml
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
