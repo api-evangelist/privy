@@ -68,6 +68,8 @@ common:
     url: rate-limits/privy-rate-limits.yml
   - type: FinOps
     url: finops/privy-finops.yml
+  - type: LLMsTxt
+    url: https://docs.privy.io/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
