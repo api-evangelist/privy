@@ -6,7 +6,7 @@ description: Privy is a wallet and authentication platform for Web3 apps offerin
   embedded wallets, server wallets, and progressive authentication. Provides client
   SDKs (React, React Native, Swift, Android, Unity, Node, Go, Python) plus a public
   REST API for wallet, user, and transaction operations.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Web3
   - Wallets
