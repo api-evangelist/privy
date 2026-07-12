@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/privy-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: appSecretAuth
+  type: http
+  scheme: basic
+  description: |-
+    HTTP Basic auth using your Privy app ID as the username and your app
+    secret as the password. Must be sent alongside the privy-app-id header.
+  sources:
+  - openapi/privy-openapi.yml

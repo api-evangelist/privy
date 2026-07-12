@@ -56,6 +56,12 @@ apis:
     - type: Documentation
       url: https://docs.privy.io/recipes/webhooks
 common:
+  - type: VulnerabilityDisclosure
+    url: security/privy-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/privy-domain-security.yml
+  - type: Authentication
+    url: authentication/privy-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/privy-io
   - type: LinkedIn
@@ -70,6 +76,8 @@ common:
     url: finops/privy-finops.yml
   - type: LlmsText
     url: https://docs.privy.io/llms.txt
+  - url: https://privy.io/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
