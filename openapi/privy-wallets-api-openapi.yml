@@ -1,0 +1,182 @@
+openapi: 3.1.0
+info:
+  title: Privy REST Users Wallets API
+  description: 'Privy is a wallet and authentication platform for Web3 apps. The Privy REST
+
+    API exposes endpoints for managing users, wallets, policies, and webhooks
+
+    across multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,
+
+    Movement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).
+
+
+    All requests must be made over HTTPS and include both the privy-app-id
+
+    header and an Authorization header using HTTP Basic auth with the app id as
+
+    the username and the app secret as the password. The API enforces per-app
+
+    rate limits and returns 429 on overage.
+
+    '
+  version: '1.0'
+  contact:
+    name: Privy
+    url: https://docs.privy.io/
+  license:
+    name: Privy Terms of Service
+    url: https://www.privy.io/legal/terms-of-use
+servers:
+- url: https://api.privy.io/v1
+  description: Production
+security:
+- appSecretAuth: []
+tags:
+- name: Wallets
+  description: Create and operate Privy-managed wallets.
+paths:
+  /wallets:
+    post:
+      tags:
+      - Wallets
+      summary: Create a wallet
+      description: 'Creates a new wallet on the requested chain for the requested owner.
+
+        Supported chain types include ethereum, solana, cosmos, stellar, sui,
+
+        aptos, movement, tron, bitcoin-segwit, bitcoin-taproot, pearl, near,
+
+        ton, starknet, and spark.
+
+        '
+      operationId: createWallet
+      parameters:
+      - $ref: '#/components/parameters/PrivyAppId'
+      - name: privy-idempotency-key
+        in: header
+        required: false
+        schema:
+          type: string
+        description: Optional idempotency key.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - chain_type
+              properties:
+                chain_type:
+                  type: string
+                  enum:
+                  - ethereum
+                  - solana
+                  - cosmos
+                  - stellar
+                  - sui
+                  - aptos
+                  - movement
+                  - tron
+                  - bitcoin-segwit
+                  - bitcoin-taproot
+                  - pearl
+                  - near
+                  - ton
+                  - starknet
+                  - spark
+                owner_id:
+                  type: string
+                  description: Optional owner user id.
+                policy_ids:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Created wallet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wallet'
+        '429':
+          description: Rate limit exceeded.
+  /wallets/{wallet_id}/rpc:
+    post:
+      tags:
+      - Wallets
+      summary: Execute a wallet RPC method
+      description: 'JSON-RPC method passthrough for signing transactions and arbitrary RPC
+
+        calls against a Privy-managed wallet. The request body is a JSON-RPC
+
+        envelope; supported methods depend on the wallet''s chain type.
+
+        '
+      operationId: walletRpc
+      parameters:
+      - $ref: '#/components/parameters/PrivyAppId'
+      - name: wallet_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - method
+              properties:
+                method:
+                  type: string
+                  description: RPC method name, e.g. eth_signTransaction, personal_sign, eth_sendTransaction.
+                params:
+                  type: array
+                  items: {}
+      responses:
+        '200':
+          description: RPC response.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+components:
+  schemas:
+    Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        chain_type:
+          type: string
+        address:
+          type: string
+        owner_id:
+          type: string
+        policy_ids:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: integer
+  parameters:
+    PrivyAppId:
+      name: privy-app-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Privy application ID. Required on every request.
+  securitySchemes:
+    appSecretAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic auth using your Privy app ID as the username and your app
+
+        secret as the password. Must be sent alongside the privy-app-id header.
+
+        '

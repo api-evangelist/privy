@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: Privy REST Users API
+  description: 'Privy is a wallet and authentication platform for Web3 apps. The Privy REST
+
+    API exposes endpoints for managing users, wallets, policies, and webhooks
+
+    across multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,
+
+    Movement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).
+
+
+    All requests must be made over HTTPS and include both the privy-app-id
+
+    header and an Authorization header using HTTP Basic auth with the app id as
+
+    the username and the app secret as the password. The API enforces per-app
+
+    rate limits and returns 429 on overage.
+
+    '
+  version: '1.0'
+  contact:
+    name: Privy
+    url: https://docs.privy.io/
+  license:
+    name: Privy Terms of Service
+    url: https://www.privy.io/legal/terms-of-use
+servers:
+- url: https://api.privy.io/v1
+  description: Production
+security:
+- appSecretAuth: []
+tags:
+- name: Users
+  description: Manage users and their linked accounts.
+paths:
+  /users/{user_id}:
+    get:
+      tags:
+      - Users
+      summary: Get a user by ID
+      description: Retrieves a Privy user object, including linked accounts, MFA methods, and metadata.
+      operationId: getUser
+      parameters:
+      - $ref: '#/components/parameters/PrivyAppId'
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found.
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: integer
+          description: Unix timestamp (seconds).
+        linked_accounts:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        mfa_methods:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        custom_metadata:
+          type: object
+          additionalProperties: true
+  parameters:
+    PrivyAppId:
+      name: privy-app-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Privy application ID. Required on every request.
+  securitySchemes:
+    appSecretAuth:
+      type: http
+      scheme: basic
+      description: 'HTTP Basic auth using your Privy app ID as the username and your app
+
+        secret as the password. Must be sent alongside the privy-app-id header.
+
+        '
