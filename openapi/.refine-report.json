@@ -1,0 +1,16 @@
+{
+  "provider": "privy",
+  "sources": [
+    "privy-users-api-openapi.yml",
+    "privy-wallets-api-openapi.yml"
+  ],
+  "outputs": [
+    "privy-users-api-openapi.yml",
+    "privy-wallets-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
