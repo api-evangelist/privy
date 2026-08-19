@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Privy REST Users Wallets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.privy.io/v1/wallets",
+            "headers": [
+              {
+                "name": "privy-app-id",
+                "value": ""
+              },
+              {
+                "name": "privy-idempotency-key",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new wallet on the requested chain for the requested owner.\nSupported chain types include ethereum, solana, cosmos, stellar, sui,\naptos, movement, tron, bitcoin-segwit, bitcoin-taproot, pearl, near,\nton, starknet, and spark.\n"
+        },
+        {
+          "info": {
+            "name": "Execute a wallet RPC method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.privy.io/v1/wallets/:wallet_id/rpc",
+            "headers": [
+              {
+                "name": "privy-app-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "wallet_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "JSON-RPC method passthrough for signing transactions and arbitrary RPC\ncalls against a Privy-managed wallet. The request body is a JSON-RPC\nenvelope; supported methods depend on the wallet's chain type.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,358 @@
+{
+  "item": [
+    {
+      "id": "21013347-392b-40e9-ab32-923032056fa8",
+      "name": "Wallets",
+      "description": {
+        "content": "Create and operate Privy-managed wallets.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "336d9cbd-38b6-41b9-8f86-bd5493da40a8",
+          "name": "Create a wallet",
+          "request": {
+            "name": "Create a wallet",
+            "description": {
+              "content": "Creates a new wallet on the requested chain for the requested owner.\nSupported chain types include ethereum, solana, cosmos, stellar, sui,\naptos, movement, tron, bitcoin-segwit, bitcoin-taproot, pearl, near,\nton, starknet, and spark.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Privy application ID. Required on every request.",
+                "key": "privy-app-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Optional idempotency key.",
+                "key": "privy-idempotency-key",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"chain_type\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b4b4fee-64bf-42ac-94e8-e898b4f19dda",
+              "name": "Created wallet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Privy application ID. Required on every request.",
+                    "key": "privy-app-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional idempotency key.",
+                    "key": "privy-idempotency-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chain_type\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"chain_type\": \"string\",\n  \"address\": \"string\",\n  \"owner_id\": \"string\",\n  \"policy_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_at\": 2617\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbe4aa58-5391-4675-b76e-547a55a88936",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Privy application ID. Required on every request.",
+                    "key": "privy-app-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Optional idempotency key.",
+                    "key": "privy-idempotency-key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chain_type\": \"<string>\",\n  \"owner_id\": \"<string>\",\n  \"policy_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cde9d85-83b2-43d6-a430-d7a7ca340441",
+          "name": "Execute a wallet RPC method",
+          "request": {
+            "name": "Execute a wallet RPC method",
+            "description": {
+              "content": "JSON-RPC method passthrough for signing transactions and arbitrary RPC\ncalls against a Privy-managed wallet. The request body is a JSON-RPC\nenvelope; supported methods depend on the wallet's chain type.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "wallets",
+                ":wallet_id",
+                "rpc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wallet_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Privy application ID. Required on every request.",
+                "key": "privy-app-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62c2bdf8-d723-400b-be3a-eacefaec2532",
+              "name": "RPC response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "wallets",
+                    ":wallet_id",
+                    "rpc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wallet_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Privy application ID. Required on every request.",
+                    "key": "privy-app-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\",\n  \"key_1\": 9902.041685207776,\n  \"key_2\": 3955.089865772825,\n  \"key_3\": 9061.207511832823\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.privy.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2b63dd7d-5e4a-4662-896f-432a2cf576d8",
+    "name": "Privy REST Users Wallets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Privy is a wallet and authentication platform for Web3 apps. The Privy REST\nAPI exposes endpoints for managing users, wallets, policies, and webhooks\nacross multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,\nMovement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).\n\nAll requests must be made over HTTPS and include both the privy-app-id\nheader and an Authorization header using HTTP Basic auth with the app id as\nthe username and the app secret as the password. The API enforces per-app\nrate limits and returns 429 on overage.\n\n\nContact Support:\n Name: Privy",
+      "type": "text/plain"
+    }
+  }
+}

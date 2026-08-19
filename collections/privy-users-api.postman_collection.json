@@ -1,0 +1,207 @@
+{
+  "item": [
+    {
+      "id": "6a7fee19-b3ff-4ac3-8452-48e1c2c3f03f",
+      "name": "Users",
+      "description": {
+        "content": "Manage users and their linked accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10653d61-0bf8-4ef6-b590-bdda2cc049b3",
+          "name": "Get a user by ID",
+          "request": {
+            "name": "Get a user by ID",
+            "description": {
+              "content": "Retrieves a Privy user object, including linked accounts, MFA methods, and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Privy application ID. Required on every request.",
+                "key": "privy-app-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "407e7300-75c3-4e99-8f0f-8f03caea96a1",
+              "name": "User object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Privy application ID. Required on every request.",
+                    "key": "privy-app-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"created_at\": 2702,\n  \"linked_accounts\": [\n    {\n      \"key_0\": false,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"mfa_methods\": [\n    {\n      \"key_0\": 7871,\n      \"key_1\": \"string\",\n      \"key_2\": 7185,\n      \"key_3\": 1792\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": 5066.455715621585,\n      \"key_2\": true,\n      \"key_3\": \"string\",\n      \"key_4\": 8557\n    }\n  ],\n  \"custom_metadata\": {\n    \"key_0\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e596862-a0c8-4f41-9282-784d265f6ea0",
+              "name": "User not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Privy application ID. Required on every request.",
+                    "key": "privy-app-id",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.privy.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3dbb4212-bb16-4201-9aad-be4776700dc5",
+    "name": "Privy REST Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Privy is a wallet and authentication platform for Web3 apps. The Privy REST\nAPI exposes endpoints for managing users, wallets, policies, and webhooks\nacross multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,\nMovement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).\n\nAll requests must be made over HTTPS and include both the privy-app-id\nheader and an Authorization header using HTTP Basic auth with the app id as\nthe username and the app secret as the password. The API enforces per-app\nrate limits and returns 429 on overage.\n\n\nContact Support:\n Name: Privy",
+      "type": "text/plain"
+    }
+  }
+}
