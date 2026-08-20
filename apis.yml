@@ -40,6 +40,11 @@ apis:
   tags:
   - REST
   - Wallets
+  - User
+  - Authentication
+  tags_raw:
+  - REST
+  - Wallets
   - Users
   - Auth
   properties:
@@ -54,6 +59,9 @@ apis:
   baseURL: https://api.privy.io/v1/wallets/{walletId}/rpc
   tags:
   - JSON-RPC
+  - Wallets
+  tags_raw:
+  - JSON-RPC
   - Wallet
   properties:
   - type: Documentation
@@ -66,6 +74,8 @@ apis:
   humanURL: https://docs.privy.io/recipes/webhooks
   baseURL: https://api.privy.io/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: Documentation
@@ -76,6 +86,8 @@ apis:
   humanURL: https://docs.privy.io/api-reference/introduction
   baseURL: https://api.privy.io/v1
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
