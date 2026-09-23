@@ -1,24 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Privy REST Users API
-  description: 'Privy is a wallet and authentication platform for Web3 apps. The Privy REST
-
-    API exposes endpoints for managing users, wallets, policies, and webhooks
-
-    across multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,
-
-    Movement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).
-
-
-    All requests must be made over HTTPS and include both the privy-app-id
-
-    header and an Authorization header using HTTP Basic auth with the app id as
-
-    the username and the app secret as the password. The API enforces per-app
-
-    rate limits and returns 429 on overage.
-
-    '
+  description: Privy is a wallet and authentication platform for Web3 apps.
   version: '1.0'
   contact:
     name: Privy

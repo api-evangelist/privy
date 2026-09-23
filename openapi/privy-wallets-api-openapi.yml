@@ -1,24 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Privy REST Users Wallets API
-  description: 'Privy is a wallet and authentication platform for Web3 apps. The Privy REST
-
-    API exposes endpoints for managing users, wallets, policies, and webhooks
-
-    across multiple blockchains (Ethereum, Solana, Cosmos, Stellar, Sui, Aptos,
-
-    Movement, Tron, Bitcoin Segwit/Taproot, Pearl, NEAR, TON, Starknet, Spark).
-
-
-    All requests must be made over HTTPS and include both the privy-app-id
-
-    header and an Authorization header using HTTP Basic auth with the app id as
-
-    the username and the app secret as the password. The API enforces per-app
-
-    rate limits and returns 429 on overage.
-
-    '
+  title: Privy REST Wallets API
+  description: Privy is a wallet and authentication platform for Web3 apps.
   version: '1.0'
   contact:
     name: Privy
@@ -46,9 +29,7 @@ paths:
 
         aptos, movement, tron, bitcoin-segwit, bitcoin-taproot, pearl, near,
 
-        ton, starknet, and spark.
-
-        '
+        ton, starknet, and spark.'
       operationId: createWallet
       parameters:
       - $ref: '#/components/parameters/PrivyAppId'
@@ -110,9 +91,7 @@ paths:
 
         calls against a Privy-managed wallet. The request body is a JSON-RPC
 
-        envelope; supported methods depend on the wallet''s chain type.
-
-        '
+        envelope; supported methods depend on the wallet''s chain type.'
       operationId: walletRpc
       parameters:
       - $ref: '#/components/parameters/PrivyAppId'
@@ -145,6 +124,14 @@ paths:
                 type: object
                 additionalProperties: true
 components:
+  parameters:
+    PrivyAppId:
+      name: privy-app-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Privy application ID. Required on every request.
   schemas:
     Wallet:
       type: object
@@ -163,14 +150,6 @@ components:
             type: string
         created_at:
           type: integer
-  parameters:
-    PrivyAppId:
-      name: privy-app-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Privy application ID. Required on every request.
   securitySchemes:
     appSecretAuth:
       type: http
