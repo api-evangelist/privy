@@ -42,6 +42,14 @@ paths:
         '404':
           description: User not found.
 components:
+  parameters:
+    PrivyAppId:
+      name: privy-app-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Privy application ID. Required on every request.
   schemas:
     User:
       type: object
@@ -64,14 +72,6 @@ components:
         custom_metadata:
           type: object
           additionalProperties: true
-  parameters:
-    PrivyAppId:
-      name: privy-app-id
-      in: header
-      required: true
-      schema:
-        type: string
-      description: Privy application ID. Required on every request.
   securitySchemes:
     appSecretAuth:
       type: http
